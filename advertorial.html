@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicina e Vida - A Fórmula Natural que Transforma Vidas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --main-bg: #f0f2f5; /* Cinza claro para fundo */
+            --header-bg: #ffffff;
+            --text-dark: #2c3e50; /* Azul escuro */
+            --text-light: #7f8c8d; /* Cinza médio */
+            --highlight-red: #e74c3c; /* Vermelho para destaque */
+            --cta-orange: #f39c12; /* Laranja para CTA */
+            --border-light: #e0e0e0; /* Cinza mais claro para bordas */
+            --font-heading: 'Merriweather', serif; /* Fonte serifada para títulos */
+            --font-body: 'Open Sans', sans-serif; /* Fonte sans-serif para corpo do texto */
+        }
+
+        body {
+            font-family: var(--font-body);
+            margin: 0;
+            padding: 0;
+            background-color: var(--main-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 25px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--header-bg);
+            padding: 20px 0;
+            border-bottom: 5px solid var(--highlight-red);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+
+        .header-content {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-family: var(--font-heading);
+            margin: 0;
+            font-size: 3.2em;
+            color: var(--text-dark);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--highlight-red);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--highlight-red);
+        }
+
+        /* Main Content - Advertorial */
+        .main-content {
+            flex: 3;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .main-content h2.headline {
+            font-family: var(--font-heading);
+            font-size: 3.5em;
+            color: var(--text-dark);
+            margin-top: 0;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .main-content p.subhead {
+            font-size: 1.6em;
+            color: var(--text-light);
+            margin-bottom: 40px;
+            font-style: italic;
+            line-height: 1.5;
+            border-left: 4px solid var(--border-light);
+            padding-left: 20px;
+        }
+
+        .main-content h3 {
+            font-family: var(--font-heading);
+            font-size: 2em;
+            color: var(--highlight-red);
+            margin-top: 45px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .main-content p {
+            margin-bottom: 1.2em;
+            text-align: left; /* Alinhamento à esquerda para melhor legibilidade */
+            font-size: 1.05em;
+        }
+
+        .image-placeholder {
+            background-color: var(--border-light);
+            height: 350px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-light);
+            font-size: 1.3em;
+            margin: 35px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* CTA Block */
+        .cta-block {
+            background-color: var(--main-bg);
+            padding: 50px 30px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 3px dashed var(--border-light);
+            border-bottom: 3px dashed var(--border-light);
+            border-radius: 8px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--cta-orange);
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 1.8em;
+            text-align: center;          /* Centraliza o texto dentro do botão */
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background-color: #e68a00;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            flex: 1;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        .sidebar h3 {
+            font-family: var(--font-heading);
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 15px;
+            margin-top: 0;
+            font-size: 1.6em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 18px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1.05em;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar ul li a:hover {
+            color: var(--highlight-red);
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-light);
+            margin-top: 60px;
+            font-size: 0.9em;
+            color: var(--text-light);
+            background-color: var(--header-bg);
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.05);
+        }
+
+        .top-bar {
+            background-color: var(--text-dark);
+            color: #fff;
+            padding: 10px 0;
+            font-size: 0.85em;
+            text-align: center;
+        }
+
+        /* Pop-up styles */
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .popup-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .popup-overlay.active .popup-content {
+            transform: scale(1);
+        }
+
+        .popup-content p {
+            font-size: 1.2em;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .popup-buttons button {
+            padding: 12px 25px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .popup-buttons .btn-green {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .popup-buttons .btn-green:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+        }
+
+        .popup-buttons .btn-red {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .popup-buttons .btn-red:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+        }
+
+        .popup-buttons .btn-access {
+            background-color: var(--cta-orange);
+            color: #fff;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .popup-buttons .btn-access:hover {
+            background-color: #e68a00;
+            transform: translateY(-2px);
+        }
+
+        .pix-key {
+            font-weight: bold;
+            color: var(--text-dark);
+            background-color: var(--main-bg);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .pix-key:hover {
+            background-color: var(--border-light);
+        }
+
+        /* Final content styles */
+        .final-content {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: var(--main-bg);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .final-content iframe {
+            width: 100%;
+            max-width: 800px;
+            height: 600px;
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .final-content p {
+            font-size: 1.1em;
+            color: var(--text-dark);
+            margin-top: 20px;
+        }
+
+        .final-content .pix-copy-text {
+            font-weight: bold;
+            color: var(--highlight-red);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .final-content h2 {
+            font-family: var(--font-heading);
+            font-size: 2.5em;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                margin-top: 20px;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            .container {
+                flex-direction: column;
+                margin: 15px auto;
+            }
+            .main-content, .sidebar {
+                padding: 25px;
+            }
+            .main-content h2.headline {
+                font-size: 2.5em;
+            }
+            .main-content p.subhead {
+                font-size: 1.3em;
+            }
+            .logo h1 {
+                font-size: 2.5em;
+            }
+            .cta-button {
+                font-size: 1.5em;
+                padding: 15px 30px;
+            }
+            .image-placeholder {
+                height: 250px;
+            }
+            .popup-content {
+                padding: 20px;
+            }
+            .popup-buttons button {
+                margin: 10px 0;
+                width: 100%;
+            }
+            .final-content iframe {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content h2.headline {
+                font-size: 2em;
+            }
+            .main-content p.subhead {
+                font-size: 1.1em;
+            }
+            .logo h1 {
+                font-size: 2em;
+            }
+            nav ul li {
+                margin: 0 5px;
+            }
+            nav ul li a {
+                font-size: 0.9em;
+            }
+            .image-placeholder {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        As últimas notícias sobre saúde e bem-estar. Informação de qualidade para você e sua família.
+    </div>
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>Medicina e Vida</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Saúde</a></li>
+                    <li><a href="#">Bem-estar</a></li>
+                    <li><a href="#">Notícias</a></li>
+                    <li><a href="#">Pesquisas</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container" id="main-page-content">
+        <div class="main-content">
+            <h2 class="headline">“Descoberta de pesquisador brasileiro pode acabar com a dependência de remédios para ereção. Receita natural já está transformando a vida de homens comuns.”</h2>
+            <p class="subhead">“Batizado de “SEF”, método natural e seguro tem ganhado destaque por seus resultados surpreendentes em homens de todas as idades.”</p>
+            
+            <h3>VEJA A MATÉRIA COMPLETA</h3>
+            <p style="font-size: 20px;">Imagine, por um instante, a cena que mais assombra milhões de homens todas as noites: O desejo está lá, mas o corpo… <b>não acompanha.</b> Ela olha nos seus olhos esperando firmeza. Você disfarça, inventa uma <b>desculpa</b> qualquer — “estresse”, “cansaço”, “bebida demais”… Mas por dentro, a sensação é de impotência. Literalmente. <br> <b>E pior:</b> não é só na cama. É no banheiro, diante do espelho, quando a dúvida invade: <i><b>“Será que ainda sou HOMEM de verdade?”</b></i> <br><br>Para muitos, isso virou um fardo silencioso, carregado em segredo, como uma corrente que prende a autoestima e destrói relacionamentos. Mas e se eu te dissesse que não precisa ser assim? É exatamente isso que o Dr. Reinaldo Rêgo Gomes vem mostrando. <br> Enquanto a indústria farmacêutica empurra <b>comprimidos azuis</b> a preço de ouro — cheios de efeitos colaterais perigosos — ele foi atrás de algo diferente. Um conhecimento esquecido. Práticas milenares usadas por culturas da Ásia, da África e de outras regiões do mundo, onde os homens mantinham <b>vigor</b>, <b>força</b> e <b>confiança</b> até a velhice. E agora, esse segredo chega adaptado à realidade dos homens brasileiros.</p>
+
+            <div class="image-placeholder">
+                <img src="materia.png" alt="Materia">
+            </div>
+
+            <h3>O PROBLEMA ESCONDIDO</h3>
+            <p style="font-size: 20px;">De acordo com dados recentes da <b>Sociedade Brasileira de Urologia</b>, milhões de homens já sofrem com algum grau de disfunção erétil. <br>O que poucos falam é que esse número <b>não para de crescer.</b> Os especialistas alertam: não se trata apenas de um problema físico. A cada falha, a autoestima cai. Relacionamentos começam a se desgastar. E silenciosamente, muitos homens passam a viver com vergonha, medo e isolamento. <br><br> Tradicionalmente, a solução oferecida é quase sempre a mesma: medicamentos químicos. <b>Caros</b>, temporários e — em muitos casos — <b>arriscados</b>. Um levantamento feito em clínicas privadas apontou que os efeitos colaterais mais comuns incluem: — <b>taquicardia</b> — <b>fortes dores de cabeça</b> — <b>visão turva</b> — e até riscos cardíacos sérios. <br><i>“É como trocar um problema por outro ainda maior”</i>, afirma o Dr. Reinaldo Rêgo Gomes, Urologista e pesquisador que vem investigando alternativas naturais para o tema. Essa situação tem deixado milhares de homens à procura de algo diferente. Uma forma <b>segura</b>, <b>acessível</b> e <b>comprovada</b> de recuperar não apenas o desempenho, mas também a confiança e a qualidade de vida.</p>
+
+            <div class="image-placeholder">
+                <img src="homem.png" alt="Materia">
+            </div>
+
+            <h3>A DESCOBERTA</h3>
+            <p style="font-size: 20px;"><b>A virada aconteceu fora do Brasil.</b><br><br> Em uma série de viagens pela Ásia, África e América Latina, o Dr. Reinaldo Rêgo Gomes começou a notar algo em comum entre diferentes culturas. Em pequenas aldeias africanas, homens de idade avançada ainda mantinham <b>vitalidade impressionante.</b> Na Malásia, rituais de fertilidade utilizavam ervas específicas que, segundo relatos locais, eram capazes de <b>“despertar a energia vital do homem”</b>. Na região andina, comunidades preservavam infusões secretas, passadas apenas entre curandeiros, que garantiam <b>força</b> e <b>disposição</b> até a velhice. <br><br> Por séculos, essas práticas permaneceram escondidas do mundo ocidental — muitas vezes ridicularizadas pela medicina moderna. Mas o Dr. Gomes decidiu fazer diferente: catalogou, testou, e sobretudo buscou padrões. <br><br><i>“Eu percebia que havia algo poderoso ali. Não era superstição. <b>Eram ingredientes com efeitos reais no corpo masculino.</b> O desafio era entender como combinar e adaptar isso ao estilo de vida atual”</i>, relatou em entrevista. <br><br> Após anos de pesquisa, análises laboratoriais e comparações clínicas, surgiu a fórmula batizada de <b>Segredo da Ereção de Ferro</b>. Uma receita simples, natural, sem efeitos colaterais graves e que, segundo testes preliminares, já devolveu confiança e desempenho a dezenas de voluntários.</p>
+
+            <div class="image-placeholder">
+                <img src="cha.png" alt="Materia">
+            </div>
+
+            <h3>RESULTADOS REAIS</h3>
+            <p style="font-size: 20px;">Quando a fórmula começou a ser testada, os números surpreenderam até o próprio Dr. Gomes. Homens de 30, 40, 50 e até 65 anos — muitos deles já sem esperança — toparam participar como voluntários. O que aconteceu foi descrito como <b>“um choque de realidade”</b>. <br><br> Em poucos dias de uso, os relatos começaram a chegar: <br> • <b>Ereções firmes e duradouras</b>, comparáveis às da juventude.<br> • <b>Uma confiança renovada</b>, refletida até no olhar. <br>• <b>Energia extra</b> não só no quarto, mas também no trabalho e na rotina diária. <br>• <b>Casamentos que voltaram a ter cumplicidade e desejo</b>. <br><br>Um deles, José Carlos, 52 anos, contou em lágrimas: <i>“Eu já tinha desistido… achava que a idade tinha me derrotado. Hoje, minha esposa me olha como nos primeiros anos de casados. Isso não tem preço. <b>É como ganhar minha vida de volta.</b>”</i> <br>Outro, um empresário de 61 anos que pediu anonimato, foi direto: <i>“Investi mais de 10 mil reais em consultas e remédios que me deixavam tonto e sem resultado. Com essa <b>receita, em menos de um mês</b>, eu voltei a ser homem de verdade.”</i> <br> Esses depoimentos, até então guardados em relatórios internos, começaram a despertar atenção fora do círculo acadêmico. O que era apenas uma pesquisa silenciosa, de repente se transformou em esperança para milhares de homens comuns.</p>
+
+            <div class="image-placeholder">
+                <img src="casal.png" alt="Materia">
+            </div>
+
+            <h3>O CONFLITO COM A INDÚSTRIA</h3>
+            <p style="font-size: 20px;">Não demorou muito para que a descoberta começasse a incomodar os gigantes. Afinal, uma <b>receita natural</b>, barata e sem efeitos colaterais significa uma coisa: menos milhões nos cofres das farmacêuticas. <br><br>Relatórios internos começaram a circular. Consultórios receberam “recomendações” para não endossar soluções alternativas. E-mails confidenciais revelavam frases como: <i><b>“Precisamos conter essa informação antes que se torne pública.”</b></i> Mas o Dr. Reinaldo Rêgo Gomes não recuou. Em vez de se calar, ele fez exatamente o contrário: decidiu reunir todo o conhecimento, as combinações de plantas, as doses corretas e os detalhes do preparo em um material acessível a qualquer homem. <br><br><i>“Eu sabia que se ficasse guardado em laboratório, morreria na gaveta. Essa descoberta é dos homens, não das empresas”</i>, afirma o pesquisador. Assim nasceu o <b>Segredo da Ereção de Ferro</b> — um guia direto, sem enrolação, criado para que o homem comum possa recuperar sua virilidade sem se tornar refém de pílulas caras e arriscadas.</p>
+
+            <div class="image-placeholder">
+                <img src="dr.png" alt="Materia">
+            </div>
+
+            <h3>COMO TER ACESSO A ESSA DESCOBERTA</h3>
+            <p style="font-size: 20px;"><b>O Segredo da Ereção de Ferro</b> não é mais uma daquelas receitas genéricas cheias de teorias vazias. <br><br> <b>Com ele você encontra:</b> <br>• A lista completa das plantas reveladas em viagens pela Ásia, África e América Latina; <br> • A combinação exata que potencializa os resultados; <br> • O passo a passo simples para preparar e usar, sem enrolação nem termos técnicos. <br><br>É como ter o Dr. Reinaldo Rêgo Gomes sentado ao seu lado, mostrando exatamente o que fazer. <br><br>E agora vem a parte que mais choca: Enquanto grandes empresas cobram centenas de reais por comprimidos que só escondem o problema, esse guia está sendo <b>liberado por uma colaboração mínima de R$17</b>. Esse valor não enriquece ninguém. Ele existe apenas para cobrir custos e <b>manter o projeto vivo</b>, para que mais homens possam ter acesso antes que essa descoberta seja enterrada pelos interesses da indústria. Pense comigo: R$17 hoje valem menos que uma pizza de supermercado. <b>Mas podem devolver a você a confiança, a potência e a sensação de estar no controle da sua vida íntima.</b></p>
+                <a href="#" class="cta-button open-popup-btn">Apoiar o projeto e acessar a receita agora</a>
+            <h3>ENTREVISTA EXCLUSIVA COM O DR. REINALDO RÊGO GOMES</h3>
+            <p style="font-size: 20px;">Durante nossa conversa, não pude deixar de fazer as perguntas que todo homem faria. E as respostas do Dr. Gomes foram diretas — e até <b>surpreendentes</b>. <br><br><i>“Isso funciona mesmo para a minha idade? Tenho quase 70 anos…”</i> Dr. Gomes sorriu antes de responder: <i>“<b>Justamente nessa faixa etária</b> vimos alguns dos relatos mais emocionantes. Não se trata de juventude, mas de circulação, energia vital. O corpo ainda tem poder, só precisa do <b>estímulo certo.</b>”</i> <br><br> <i>“Mas não existe nenhum risco? E se eu tiver problema no coração?”</i> Ele foi categórico: <i>“<b>Se houvesse riscos, eu seria o primeiro a barrar essa pesquisa.</b> Até agora, nenhum efeito colateral grave foi relatado. São ingredientes usados por povos há séculos, apenas organizados de uma forma inédita para os homens de hoje.”</i><br><br> <i>“E se tudo isso não passar de psicológico?”</i> O médico inclinou-se para frente e disse em tom firme: <i>“A mente ajuda, mas não sustenta. Aqui o corpo responde de forma física, concreta. <b>Ereções firmes, circulação ativa</b>. E quando o corpo reage, a confiança mental vem como consequência.”</i><br><br><i>“Preciso abandonar totalmente os remédios que já uso?”</i> Dr. Gomes respirou fundo antes de responder: <i>“Jamais oriento ninguém a interromper um tratamento médico sem acompanhamento. O que propomos aqui é um <b>recurso natural</b> que pode ser aliado, não inimigo. Muitos homens relatam que, com o tempo, a dependência de comprimidos diminuiu até desaparecer.”</i> <br><br><i>“E se minha parceira descobrir que estou tentando isso?”</i> Ele deu uma risada leve e rebateu: <i>“Curiosamente, os relatos mais bonitos vieram justamente das parceiras. Porque não é só sobre ereção. É sobre <b>confiança, energia, intimidade</b>. Muitas mulheres disseram sentir que ‘ganharam de volta o homem que tinham perdido’.”</i></p>
+
+            <div class="cta-block">
+                <p>Chegou a hora de decidir. Você pode fechar esta página e continuar preso ao ciclo de desculpas, frustração e silêncio. Ou pode fazer parte do grupo de homens que já recuperaram sua confiança, sua potência e sua vida íntima.</p>
+                <a href="#" class="cta-button open-popup-btn">Apoiar o projeto e acessar a receita agora</a>
+                <p style="margin-top: 20px; font-size: 0.9em; color: var(--text-light);">⚠️ Mas atenção: este material não ficará disponível para sempre. A pressão da indústria é real, e não sabemos até quando poderemos manter esse conteúdo no ar.</p>
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <h3>Mais Lidas</h3>
+            <ul>
+                <li><a href="#">Nova pesquisa sobre sono: o que você precisa saber</a></li>
+                <li><a href="#">Dicas para uma vida mais longa e saudável</a></li>
+                <li><a href="#">Especialistas alertam sobre dietas radicais: os perigos</a></li>
+                <li><a href="#">Saúde mental: como o estresse afeta seu corpo</a></li>
+                <li><a href="#">Alimentação consciente: o segredo para o bem-estar</a></li>
+            </ul>
+
+            <h3>Outras Notícias</h3>
+            <ul>
+                <li><a href="#">Vacina contra o câncer: avanços promissores</a></li>
+                <li><a href="#">Tecnologia na medicina: o futuro da saúde</a></li>
+                <li><a href="#">Exercícios físicos: o guia completo para iniciantes</a></li>
+                <li><a href="#">Doenças raras: desafios e esperança para pacientes</a></li>
+                <li><a href="#">O poder das plantas: remédios naturais que funcionam</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; © 2025 Medicina e Vida. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Pop-up HTML -->
+    <div class="popup-overlay" id="popup-overlay">
+        <div class="popup-content" id="popup-content">
+            <p id="popup-text"></p>
+            <div class="popup-buttons" id="popup-buttons"></div>
+        </div>
+    </div>
+
+    <!-- Final Content HTML -->
+    <div class="final-content" id="final-content">
+        <h2 id="final-content-title">Equipe Fundamento e Vida</h2>
+        <iframe src="https://drive.google.com/file/d/1-2UN10qUbP6S2D4JeBY2ahcRwFhE4E1j/preview" width="640" height="480" allow="autoplay"></iframe>
+        <p>Não doou ainda? Basta copiar a chave pix <span class="pix-copy-text" data-pix-key="61.094.034/0001-87">61.094.034/0001-87</span> e fazer uma doação qualquer 😉</p>
+    </div>
+
+<script>
+    const popupOverlay = document.getElementById('popup-overlay');
+    const popupContent = document.getElementById('popup-content');
+    const popupText = document.getElementById('popup-text');
+    const popupButtons = document.getElementById('popup-buttons');
+    const mainPageContent = document.getElementById('main-page-content');
+    const finalContent = document.getElementById('final-content');
+    const pageTitle = document.querySelector('title');
+    const headerElement = document.querySelector('header');
+    const topBarElement = document.querySelector('.top-bar');
+    const footerElement = document.querySelector('footer');
+
+    const pixKey = "61.094.034/0001-87";
+
+    function showPopup(text, buttonsHTML) {
+        popupText.innerHTML = text;
+        popupButtons.innerHTML = buttonsHTML;
+        popupOverlay.classList.add('active');
+    }
+
+    function hidePopup() {
+        popupOverlay.classList.remove('active');
+    }
+
+    function copyToClipboard(text) {
+        const el = document.createElement('textarea');
+        el.value = text;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        alert('Chave Pix copiada!'); 
+    }
+
+    function showRecipeContent() {
+        mainPageContent.style.display = 'none';
+        headerElement.style.display = 'none';
+        topBarElement.style.display = 'none';
+        footerElement.style.display = 'none';
+        finalContent.style.display = 'flex';
+        pageTitle.textContent = 'Equipe Fundamento e Vida';
+    }
+
+    // ✅ Seleciona todos os botões que têm a classe .open-popup-btn
+    const openPopupBtns = document.querySelectorAll('.open-popup-btn');
+    openPopupBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault(); // evita redirecionamento
+
+            const initialText = "Que bom que você se interessou em fazer parte dessa luta contra remédios industrializados e se interessou pela receita. Antes de acessar, você poderá estar ajudando no projeto do Dr. Reinaldo, basta copiar a chave pix abaixo (CNPJ) e fazer uma transferência do valor que desejar (<b>R$17</b> é o que pedimos para manter esse projeto de pé🙏).";
+            const initialButtons = `
+                <button class="btn-green" id="copy-pix-btn">Copiar Chave</button>
+                <button class="btn-red" id="support-later-btn">Apoiar Depois</button>
+            `;
+            showPopup(initialText, initialButtons);
+
+            document.getElementById('copy-pix-btn').addEventListener('click', () => {
+                copyToClipboard(pixKey);
+                const secondText = "Agora basta ir ao seu aplicativo do banco e clicar em PIX depois colar a chave pix copiada e transferir o valor de <b>R$17</b>. A Equipe Fundamento e Vida agradece seu apoio 🙏🙏🙏🙏";
+                const secondButtons = `<button class="btn-green btn-access" id="donated-btn">Já doei</button>`;
+                showPopup(secondText, secondButtons);
+
+                document.getElementById('donated-btn').addEventListener('click', () => {
+                    const thirdText = "ÓTIMO! Basta clicar abaixo para acessar a receita!";
+                    const thirdButtons = `<button class="btn-green btn-access" id="access-recipe-btn">Acessar Receita</button>`;
+                    showPopup(thirdText, thirdButtons);
+
+                    document.getElementById('access-recipe-btn').addEventListener('click', () => {
+                        hidePopup();
+                        showRecipeContent();
+                    });
+                });
+            });
+
+            document.getElementById('support-later-btn').addEventListener('click', () => {
+                const laterText = "Tudo bem, a equipe Fundamento e Vida agradece mesmo assim!";
+                const laterButtons = `<button class="btn-green btn-access" id="access-recipe-later-btn">Acessar Receita</button>`;
+                showPopup(laterText, laterButtons);
+
+                document.getElementById('access-recipe-later-btn').addEventListener('click', () => {
+                    hidePopup();
+                    showRecipeContent();
+                });
+            });
+        });
+    });
+
+    // ✅ Copiar chave Pix no conteúdo final
+    document.querySelector('.final-content .pix-copy-text').addEventListener('click', () => {
+        copyToClipboard(pixKey);
+    });
+</script>
+
+</body>
+</html>
+
+
