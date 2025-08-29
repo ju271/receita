@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="favicon-32x32.png">
+  <title>Equipe Fundamento e Vida</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #a8e6cf 0%, #e8fffc 50%, #4a90e2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      text-align: center;
+    }
+    .site-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #045549;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .swiper {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+.swiper-slide {
+  width: 100%;         /* ocupa a largura do container responsivo */
+  height: 400px;       /* altura fixa definida */
+  display: flex;       /* garante centralização da imagem */
+  justify-content: center;
+  align-items: center;
+  background: #e8fffc 50%;    /* cor de fundo para preencher as faixas */
+  border-radius: 15px;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantém a proporção SEM cortar */
+  border-radius: 15px;
+}
+
+.header-section {
+  text-align: center;   /* centraliza tudo */
+  padding: 30px 20px;
+}
+
+.header-section .logo {
+  max-width: 200px;     /* controla tamanho da logo */
+  margin-bottom: 20px;  /* espaço abaixo da logo */
+}
+
+.header-section .headline {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937;       /* cor do texto */
+  margin-bottom: 10px;
+}
+
+.header-section .subheadline {
+  font-size: 18px;
+  color: #4b5563;
+}
+
+.top-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #e74c3c;
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  padding: 12px;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  gap: 10px;
+}
+
+#countdown {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 450px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    @media (min-width: 769px) {
+      .desktop-view { display: block; width: 100%; height: 100%; }
+      .mobile-view { display: none; }
+      .video-frame {
+        position: absolute;
+        top: -44px;
+        left: 0;
+        width: 100%;
+        height: calc(100% + 44px);
+        border: none;
+        border-radius: 15px;
+      }
+    }
+    @media (max-width: 768px) {
+      .desktop-view { display: none; }
+      .video-container {
+        height: auto;
+        display: flex;
+        align-items: center;
+      }
+      .mobile-view { 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .mobile-image {
+        width: 85%;
+        max-height: 300px;
+        border-radius: 15px;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+      }
+      .read-now-button {
+        display: inline-block;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 25px;
+        text-decoration: none;
+        color: #fff;
+        background: linear-gradient(45deg, #4CAF50, #45a049);
+        box-shadow: 0 5px 15px rgba(76,175,80,0.4);
+        transition: all .3s ease;
+      }
+      .read-now-button:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(45deg, #45a049, #388e3c);
+      }
+    }
+    /* Novo: container do leitor PDF.js no desktop */
+    #pdfDesktopContainer { position: absolute; inset: 0; border-radius: 15px; overflow-y: auto; overflow-x: hidden; background: #ffffff; -webkit-overflow-scrolling: touch; }
+    #pdfDesktopPages { width: 100%; height: auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding: 10px; }
+    #pdfDesktopPages canvas { width: 100% !important; height: auto !important; display: block; margin-bottom: 12px; }
+    /* Fim PDF.js */
+
+    /* Restauro: estilos de doação/rodapé */
+    .donation-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transform: translateY(0);
+      transition: all 0.3s ease;
+      margin-bottom: 2rem;
+    }
+    .donation-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    .donation-text {
+      font-size: 1.3rem;
+      color: #0e725e;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+    .pix-key {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #045549;
+      cursor: pointer;
+      padding: 18px 30px;
+      border-radius: 15px;
+      display: inline-block;
+      margin: 15px 0;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .pix-key:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      border-color: #4CAF50;
+    }
+    .copy-notification {
+      position: bottom;
+      top: 20px;
+      right: 20px;
+      background: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all .3s ease;
+      z-index: 1000;
+    }
+    .copy-notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    footer {
+      width: 100%;
+      text-align: center;
+      padding: 20px;
+      color: #ffffff;
+      font-size: 0.9rem;
+      margin-top: auto;
+    }
+
+ .site-footer {
+  background: #3c96b1 20%;       /* azul escuro */
+  color: #fff;
+  text-align: center;
+  padding: 50px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.footer-security {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;                /* espaçamento entre os selos */
+  margin-bottom: 15px;
+}
+
+.footer-security img {
+  height: 40px;             /* controla tamanho dos selos */
+  object-fit: contain;
+}
+
+.footer-copy {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.quem-somos {
+  background: #ffffff;     /* fundo branco */
+  color: #333;             /* cor do texto em contraste */
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.quem-somos .container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.quem-somos h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #0d47a1;          /* azul para destacar */
+}
+
+.quem-somos p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .trust-badges {
+        gap: 15px;
+    }
+
+    .trust-badge {
+        min-width: 100px;
+        padding: 12px;
+    }
+
+    .trust-icon {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer {
+        padding: 30px 0 15px;
+    }
+
+    .footer-container {
+        padding: 0 15px;
+    }
+
+    .trust-badges {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .trust-badge {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+  </style>
+</head>
+<body>
+<div class="top-banner" id="donationBanner">
+  <span id="countup"></span>
+  <span class="banner-text">
+    Estamos há <strong id="minutesText"></strong> sem receber uma doação e este site pode sair do ar a qualquer momento, nos ajude com algum valor ;)
+  </span>
+</div>
+
+
+
+  <div class="header-section">
+  <!-- Logo -->
+  <img src="images/logo.png" alt="Logo Equipe Fundamento e Vida" class="logo">
+
+  <!-- Headline -->
+  <h1 class="headline">Transformando sua saúde com soluções naturais</h1>
+
+  <!-- Subheadline -->
+  <p class="subheadline">Dê adeus à disfunção. Resultados comprovados que está mudando vidas em poucas semanas:</p>
+</div>
+
+  <div class="container">
+
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="images/slide1.jpg" alt="Slide 1"></div>
+        <div class="swiper-slide"><img src="images/slide2.jpg" alt="Slide 2"></div>
+        <div class="swiper-slide"><img src="images/slide3.jpg" alt="Slide 3"></div>
+        <div class="swiper-slide"><img src="images/slide4.jpg" alt="Slide 4"></div>
+        <div class="swiper-slide"><img src="images/slide5.jpg" alt="Slide 5"></div>
+        <div class="swiper-slide"><img src="images/slide6.jpg" alt="Slide 6"></div>
+        <div class="swiper-slide"><img src="images/slide7.jpg" alt="Slide 7"></div>
+        <div class="swiper-slide"><img src="images/slide8.jpg" alt="Slide 8"></div>
+        <div class="swiper-slide"><img src="images/slide9.jpg" alt="Slide 9"></div>
+        <div class="swiper-slide"><img src="images/slide10.jpg" alt="Slide 10"></div>
+        <div class="swiper-slide"><img src="images/slide11.jpg" alt="Slide 11"></div>
+        <div class="swiper-slide"><img src="images/slide12.jpg" alt="Slide 12"></div>
+        <div class="swiper-slide"><img src="images/slide13.jpg" alt="Slide 13"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <!-- Headline -->
+  <h1 class="headline">Fazemos por amor a cuidar de gente que nem você!</h1>
+    <!-- Subheadline -->
+  <p class="subheadline">A receita está logo abaixo:</p>
+
+    <div class="video-container">
+      <div class="desktop-view">
+        <div id="pdfDesktopContainer">
+          <div id="pdfDesktopPages" aria-label="Página do documento"></div>
+        </div>
+      </div>
+
+
+      <div class="mobile-view">
+        <a href="ler.html">
+          <img src="capamobile.PNG" alt="Visualização Mobile" class="mobile-image">
+        </a>
+        <br>
+        <a href="ler.html" class="read-now-button">Ler agora</a>
+            <p class="subheadline">Este material custou um estudo próprio de <b>10 anos</b> para ser concluído. Nos ajude com algum valor logo abaixo❤️:</p>
+      </div>
+    </div>
+    
+
+    <div class="donation-section">
+      <p class="donation-text"><b>Não doou ainda? Basta tocar para copiar a chave pix:</b></p>
+      <div class="pix-key" onclick="copyPixKey()">61.094.034/0001-87</div>
+      <p class="donation-text">e fazer uma doação qualquer 😊</p>
+    </div>
+  </div>
+
+  <section class="quem-somos" id="quem-somos">
+<div class="container">
+  <h2>Quem Somos Nós</h2>
+  
+  <!-- Imagem centralizada abaixo do título -->
+  <div style="text-align: center; margin: 20px 0;">
+    <img src="images/raw.png" alt="Equipe Fundamento e Vida" style="max-width: 250px; border-radius: 50%;">
+  </div>
+  
+  <p>
+    O <strong>Projeto Fundamento e Vida</strong> nasceu de uma jornada ousada e apaixonada do 
+    <strong>Dr. Reinaldo Rêgo Gomes</strong>. Durante anos, ele percorreu diferentes regiões do mundo — 
+    da Ásia às aldeias africanas, passando por tradições da América Latina — em busca de 
+    <em>conhecimentos milenares esquecidos</em> que pudessem transformar a saúde masculina.
+  </p>
+  
+  <p>
+    O que começou como uma investigação pessoal se transformou em uma 
+    <strong>descoberta inédita</strong>: a possibilidade de unir práticas tradicionais comprovadas, 
+    ciência moderna e o desejo genuíno de devolver confiança e vitalidade a homens comuns.
+  </p>
+  
+  <p>
+    Para tornar esse sonho realidade, o Dr. Reinaldo reuniu uma equipe de 
+    <strong>pesquisadores independentes, cientistas dedicados e colaboradores de diversas áreas</strong>. 
+    Hoje, trabalhamos juntos para levar soluções naturais, seguras e acessíveis para quem já perdeu 
+    as esperanças com tratamentos caros e cheios de riscos.
+  </p>
+  
+  <p>
+    Mas este projeto só existe por causa de <strong>homens como você</strong>. Cada passo dado, 
+    cada descoberta validada e cada material publicado só foi possível graças às 
+    <strong>doações espontâneas</strong> daqueles que já sentiram na pele os resultados e decidiram 
+    apoiar a continuidade da nossa missão.
+  </p>
+  
+  <p>
+    Nós acreditamos que saúde, confiança e qualidade de vida não devem ser privilégios — mas sim 
+    um direito de todos. E é por isso que seguimos firmes: <strong>para levar esta transformação 
+    ao maior número de pessoas possível em todo o Brasil.</strong>
+  </p>
+</div>
+
+</section>
+
+
+  <div class="copy-notification" id="copyNotification">Chave PIX copiada!</div>
+
+<footer class="site-footer">
+  <div class="footer-security">
+    <img src="images/ssl-seguro.png" alt="SSL Seguro" />
+    <img src="images/google-safe.png" alt="Site Seguro Google" />
+    <img src="images/site-protegido.png" alt="Site Protegido" />
+  </div>
+  <p class="footer-copy">Fundamento e Vida © 2025 - Todos os direitos reservados</p>
+</footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script>
+    // Renderização do PDF no desktop via PDF.js (evita download)
+    (function(){
+      function loadScript(src){
+        return new Promise(function(resolve, reject){
+          var s = document.createElement('script'); s.src = src; s.async = true; s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
+        });
+      }
+      async function renderDesktop(){
+        try {
+          var container = document.getElementById('pdfDesktopPages');
+          if (!container) return;
+          if (!window.matchMedia('(min-width: 769px)').matches) return;
+
+          if (!window.pdfjsLib){
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js');
+            if (window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions){
+              window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+            }
+          }
+          var resp = await fetch('segredo_de_ferro.pdf', { cache: 'no-store' });
+          if (!resp.ok) throw new Error('Falha ao buscar PDF: ' + resp.status);
+          var buf = await resp.arrayBuffer();
+          var data = new Uint8Array(buf);
+          var pdf = await window.pdfjsLib.getDocument({ data: data }).promise;
+
+          container.innerHTML = '';
+
+          // RENDERIZAR TODAS AS PÁGINAS
+          for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+            var page = await pdf.getPage(pageNum);
+            var baseViewport = page.getViewport({ scale: 1 });
+            var desiredWidth = (container.clientWidth || container.parentElement.clientWidth || 800) - 20;
+            var cssScale = desiredWidth / baseViewport.width;
+            var dpr = window.devicePixelRatio || 1;
+            var renderViewport = page.getViewport({ scale: cssScale * dpr });
+            var canvas = document.createElement('canvas');
+            var ctx = canvas.getContext('2d', { alpha: false });
+            canvas.width = Math.round(renderViewport.width);
+            canvas.height = Math.round(renderViewport.height);
+            canvas.style.width = Math.round(baseViewport.width * cssScale) + 'px';
+            canvas.style.height = Math.round(baseViewport.height * cssScale) + 'px';
+            await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
+            container.appendChild(canvas);
+          }
+          
+          ['contextmenu','selectstart','copy','dragstart'].forEach(function(evt){
+            container.addEventListener(evt, function(e){ e.preventDefault(); e.stopPropagation(); }, {passive:false});
+          });
+        } catch (e) { console.error(e); }
+      }
+      if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', renderDesktop);
+      else renderDesktop();
+    })();
+
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+
+    function copyPixKey() {
+      const pixKey = "61.094.034/0001-87";
+      if (navigator.vibrate) navigator.vibrate(100);
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(pixKey).then(showNotification)
+      } else {
+        const textArea = document.createElement("textarea");
+        textArea.value = pixKey;
+        textArea.style.position = "fixed";
+        textArea.style.opacity = "0";
+        document.body.appendChild(textArea);
+        textArea.select();
+        try { document.execCommand('copy'); showNotification(); }
+        catch { alert('Chave PIX: ' + pixKey); }
+        document.body.removeChild(textArea);
+      }
+    }
+
+    function showNotification() {
+      const n = document.getElementById('copyNotification');
+      n.classList.add('show');
+      setTimeout(() => n.classList.remove('show'), 3000);
+    }
+  </script>
+
+<script>
+  function startCountup() {
+    // Sorteia valor inicial entre 0 e 5 minutos
+    let initialSeconds = Math.floor(Math.random() * (5 * 60 + 1)); 
+    let minutes = Math.floor(initialSeconds / 60);
+    let seconds = initialSeconds % 60;
+
+    const countupEl = document.getElementById("countup");
+    const minutesTextEl = document.getElementById("minutesText");
+
+    function updateCountup() {
+      // Mostra o contador mm:ss
+      countupEl.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+      // Atualiza o texto "há X minutos"
+      minutesTextEl.textContent = `${minutes} minuto${minutes !== 1 ? 's' : ''}`;
+
+      // Incremento
+      if (seconds === 59) {
+        minutes++;
+        seconds = 0;
+      } else {
+        seconds++;
+      }
+    }
+
+    updateCountup(); // inicializa
+    setInterval(updateCountup, 1000);
+  }
+
+  window.onload = startCountup;
+</script>
+
+</body>
+</html>
+

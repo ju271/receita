@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leitura | Segredo de Ferro</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: #0f0f10;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      -webkit-user-select: none; user-select: none;
+      -webkit-touch-callout: none;
+    }
+    .topbar {
+      position: fixed; top: 0; left: 0; right: 0; height: 56px; z-index: 3;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 8px 12px; background: rgba(15,15,16,.96); backdrop-filter: blur(6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
+    }
+    .btn {
+      appearance: none; border: 0; border-radius: 10px; padding: 10px 14px;
+      background: #d32f2f; color: #fff; font-weight: 700; box-shadow: 0 8px 20px rgba(0,0,0,.35);
+    }
+    .brand { opacity: .9; font-size: 14px; }
+
+    .content {
+      position: fixed; inset: 56px 0 0 0;
+      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      padding: 12px 10px 40px;
+      background: #0f0f10;
+    }
+    #pdfPages { display: flex; flex-direction: column; gap: 12px; }
+    #pdfPages canvas {
+      width: 100% !important; height: auto !important; display: block;
+      background: #fff; border-radius: 8px; box-shadow: 0 8px 22px rgba(0,0,0,.35);
+    }
+
+    .loading { text-align: center; padding: 32px 12px; color: #c7c7c7; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <button class="btn" onclick="history.length ? history.back() : (window.location.href='index.html')">Voltar</button>
+    <div class="brand">Modo de leitura</div>
+  </div>
+  <main class="content" id="main">
+    <div id="loading" class="loading">Carregando PDF…</div>
+    <div id="pdfPages" aria-label="Páginas do documento"></div>
+  </main>
+
+  <script>
+    ['contextmenu','selectstart','copy','dragstart'].forEach(function(evt){
+      document.addEventListener(evt, function(e){ e.preventDefault(); e.stopPropagation(); }, {passive:false});
+    });
+
+    function loadScript(src){
+      return new Promise(function(resolve, reject){
+        var s = document.createElement('script');
+        s.src = src; s.async = true; s.onload = resolve; s.onerror = reject; document.head.appendChild(s);
+      });
+    }
+
+    (async function init(){
+      try {
+        if (!window.pdfjsLib) {
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js');
+          await loadScript('https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js');
+          if (window.pdfjsLib && window.pdfjsLib.GlobalWorkerOptions) {
+            window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+          }
+        }
+
+        var response = await fetch('segredo_de_ferro.pdf', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Falha ao buscar o PDF: ' + response.status);
+        var buffer = await response.arrayBuffer();
+        var data = new Uint8Array(buffer);
+
+        var pdf = await window.pdfjsLib.getDocument({ data: data }).promise;
+        var container = document.getElementById('pdfPages');
+        var loading = document.getElementById('loading');
+
+        loading.classList.add('hidden');
+
+        for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          var page = await pdf.getPage(pageNum);
+          var baseViewport = page.getViewport({ scale: 1 });
+          var desiredWidth = container.clientWidth;
+          var cssScale = desiredWidth / baseViewport.width;
+
+          var deviceRatio = window.devicePixelRatio || 1;
+          var outputScale = cssScale * deviceRatio;
+          var renderViewport = page.getViewport({ scale: outputScale });
+
+          var canvas = document.createElement('canvas');
+          var ctx = canvas.getContext('2d', { alpha: false });
+
+          canvas.width = Math.round(renderViewport.width);
+          canvas.height = Math.round(renderViewport.height);
+          canvas.style.width = Math.round(baseViewport.width * cssScale) + 'px';
+          canvas.style.height = Math.round(baseViewport.height * cssScale) + 'px';
+
+          await page.render({ canvasContext: ctx, viewport: renderViewport }).promise;
+          container.appendChild(canvas);
+        }
+      } catch (err) {
+        console.error(err);
+        var loading = document.getElementById('loading');
+        loading.classList.remove('hidden');
+        loading.textContent = 'Não foi possível carregar o PDF aqui. Tente novamente.';
+      }
+    })();
+  </script>
+</body>
+</html>
