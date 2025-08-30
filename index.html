@@ -296,6 +296,56 @@
   color: #444;
 }
 
+  .faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #c8e6c9;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .faq-question {
+    background: #3c96b1;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    outline: none;
+    transition: background 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .faq-question:hover {
+    background: #168bae;
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 15px;
+    background: #f4fdf4;
+    color: #333;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  .icon {
+    font-size: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .faq-question.active .icon {
+    transform: rotate(180deg);
+    content: "−";
+  }
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -339,7 +389,7 @@
     }
 }
   </style>
-  <!-- Meta Pixel Code -->
+    <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -479,7 +529,73 @@ src="https://www.facebook.com/tr?id=773719858512638&ev=PageView&noscript=1"/>
 </div>
 
 </section>
+<!-- CONTADOR -->
+<div class="container" style="text-align:center; margin-top:40px;">
+  <h2 style="font-size:26px; font-weight:bold; color:#ffffff;">
+    Mais de <span style="color:#094b54;">3.218 homens</span> já apoiaram este projeto.
+  </h2>
+  <p style="font-size:18px; margin-top:10px; color:#ffffff;">
+    Cada apoio ajuda a levar esta descoberta natural a ainda mais pessoas em todo o Brasil.
+  </p>
+</div>
+<!-- CHAMADA EMOCIONAL -->
+<div class="container" style="margin-top:40px; background:#f4fdf4; border:1px solid #c8e6c9; border-radius:8px; padding:25px; text-align:center;">
+  <p style="font-size:20px; font-style:italic; line-height:1.6; color:#333;">
+    ✨ “Cada apoio mantém viva a chance de milhares de homens recuperarem a confiança, 
+    a saúde íntima e a alegria de viver plenamente.  
+    Não deixe esse projeto parar.” ✨
+  </p>
+</div>
+<!-- FAQ (Accordion) -->
+<div class="container" style="margin-top:40px;">
+  <h2 style="text-align:center; font-size:24px; color:#ffffff; margin-bottom:20px;">
+    Perguntas Frequentes
+  </h2>
 
+  <div class="faq-item">
+    <button class="faq-question">
+      <span>Isso serve para homens mais velhos?</span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Sim. Homens de 40, 50, 60 e até 70 anos relataram resultados. 
+      A receita atua na circulação sanguínea e energia vital, que não dependem da idade.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      <span>Tem algum risco para a saúde?</span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Não foram relatados efeitos colaterais graves. 
+      São ingredientes naturais usados há séculos em diferentes culturas, agora organizados em uma receita segura.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      <span>Como funciona o apoio?</span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Você pode escolher qualquer valor de contribuição. 
+      Isso mantém o projeto vivo e garante o acesso imediato à receita completa.</p>
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <button class="faq-question">
+      <span>Em quanto tempo verei resultados?</span>
+      <span class="icon">+</span>
+    </button>
+    <div class="faq-answer">
+      <p>Cada corpo reage de uma forma, mas em nossos testes os primeiros sinais apareceram já nos primeiros dias, 
+      com melhora progressiva ao longo do tempo.</p>
+    </div>
+  </div>
+</div>
 
   <div class="copy-notification" id="copyNotification">Chave PIX copiada!</div>
 
@@ -595,6 +711,33 @@ src="https://www.facebook.com/tr?id=773719858512638&ev=PageView&noscript=1"/>
     }
   </script>
 
+  <!-- JS do Accordion -->
+<script>
+  document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+      const answer = button.nextElementSibling;
+      const icon = button.querySelector(".icon");
+
+      // Fecha todas as outras respostas
+      document.querySelectorAll(".faq-answer").forEach(item => {
+        if (item !== answer) item.style.display = "none";
+      });
+      document.querySelectorAll(".faq-question .icon").forEach(ic => {
+        if (ic !== icon) ic.textContent = "+";
+      });
+
+      // Alterna exibição da atual
+      if (answer.style.display === "block") {
+        answer.style.display = "none";
+        icon.textContent = "+";
+      } else {
+        answer.style.display = "block";
+        icon.textContent = "−";
+      }
+    });
+  });
+</script>
+
 <script>
   function startCountup() {
     // Sorteia valor inicial entre 0 e 5 minutos
@@ -630,5 +773,4 @@ src="https://www.facebook.com/tr?id=773719858512638&ev=PageView&noscript=1"/>
 
 </body>
 </html>
-
 
